@@ -1,0 +1,21 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+    MUSIC APP
+  </a>
+  <ul class="navbar-nav" *ngIf="isLogin">
+    <a style=font-weight:bold>{{userName}}</a>
+    <li class="nav-item">
+      <button style=border:none align-text=right class="nav-link" (click)="doLogout()">
+        Logout
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> loading...
+</ngx-spinner>
+
+<router-outlet></router-outlet>

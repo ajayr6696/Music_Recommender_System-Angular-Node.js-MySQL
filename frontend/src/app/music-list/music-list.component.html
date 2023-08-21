@@ -1,0 +1,16 @@
+<div>
+    <div class="card" style="width: 18rem; margin: 3% 0 0 4%; float: left;" *ngFor="let song of musicList">
+        <img class="card-img-top" src="https://media.tenor.com/images/aa9aee02ac17a2e9fb93b2123627d823/tenor.gif"
+            alt="Card image cap">
+        <div style="white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;" class="card-body">
+            <h5 class="card-title">{{song.title}}</h5>
+            <p class="card-text">{{song.release}}</p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/player']"
+                [state]="{song: song}">Play
+            </a>
+            <img src="https://www.flaticon.com/svg/vstatic/svg/81/81250.svg?token=exp=1616917154~hmac=a124e8cf59fda6bf4233574f425cb098" width="40" height="30" align="right" *ngIf=song.isLiked>
+        </div>
+    </div>
+</div>

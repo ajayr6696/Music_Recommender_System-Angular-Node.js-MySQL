@@ -1,0 +1,90 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-horizontal">
+                    <div class="img-square-wrapper">
+                        <img class="" src="https://media.tenor.com/images/aa9aee02ac17a2e9fb93b2123627d823/tenor.gif"
+                            alt="Card image cap">
+                    </div>
+                    <div class="card-body" *ngIf="song">
+                        <h4 class="card-title">{{song.title}}</h4>
+                        <p class="card-text">{{song.album}}</p>
+                        <img src="https://www.flaticon.com/svg/vstatic/svg/81/81250.svg?token=exp=1616917154~hmac=a124e8cf59fda6bf4233574f425cb098" width="40" height="30" *ngIf=song.isLiked>
+                        <br> <br>
+                        <a class="btn btn-primary" *ngIf=song.isLiked (click)=unlikeSong()>Remove from Liked Songs</a>
+                        <a class="btn btn-primary" *ngIf=!song.isLiked (click)=likeSong()>Add to Liked Songs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div style="margin: 2% 0 0 4%;">
+            <h3 style="font-weight: bold;">Similar songs by title</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card" style="width: 14rem; margin: 3% 0 0 4%; float: left;"
+            *ngFor="let item of titleRecommendations">
+            <img class="card-img-top" src="../../assets/ezgif.com-gif-maker (1).gif" alt="Card image cap">
+            <div style="white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;" class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.album}}</p>
+                <a class="btn btn-primary" (click)="changeSong(item)">Play</a>
+            </div>
+        </div>
+        <div style="margin: 2% 0 0 4%;" *ngIf="titleRecommendations && !titleRecommendations.length">
+            <h6>No similar records found</h6>
+        </div>
+    </div>
+    <hr style="margin-top: 5%; border-top: 1px solid rgb(0, 0, 0);">
+    <div class="row">
+        <div style="margin: 2% 0 0 4%;">
+            <h3 style="font-weight: bold;">Similar songs by album</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card" style="width: 14rem; margin: 3% 0 0 4%; float: left;"
+            *ngFor="let item of releaseRecommendations">
+            <img class="card-img-top" src="../../assets/ezgif.com-gif-maker (1).gif" alt="Card image cap">
+            <div style="white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;" class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.album}}</p>
+                <a href="#" class="btn btn-primary" [routerLink]="['/player']" [state]="{song: song}">Play</a>
+            </div>
+        </div>
+        <div style="margin: 2% 0 0 4%;" *ngIf=" releaseRecommendations && !releaseRecommendations.length">
+            <h6>No similar records found</h6>
+        </div>
+    </div>
+    <hr style="margin-top: 5%; border-top: 1px solid rgb(0, 0, 0);">
+    <div class="row">
+        <div style="margin: 2% 0 0 4%;">
+            <h3 style="font-weight: bold;">Users also like</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card" style="width: 14rem; margin: 3% 0 0 4%; float: left;"
+            *ngFor="let item of likedRecommendations">
+            <img class="card-img-top" src="../../assets/ezgif.com-gif-maker (1).gif" alt="Card image cap">
+            <div style="white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;" class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.album}}</p>
+                <a href="#" class="btn btn-primary" [routerLink]="['/player']" [state]="{song: song}">Play</a>
+            </div>
+        </div>
+        <div style="margin: 2% 0 0 4%;" *ngIf=" likedRecommendations && !likedRecommendations.length">
+            <h6>No similar records found</h6>
+        </div>
+    </div>
+</div>

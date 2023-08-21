@@ -1,0 +1,13 @@
+<div class="imgcontainer">
+    <img src="https://cse.iitk.ac.in/users/cs365/2014/_submissions/shefalig/project/music.jpg" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" [(ngModel)]="email" placeholder="Enter Username" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" [(ngModel)]="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit" (click)=doLogin()>Login</button>
+  </div>
